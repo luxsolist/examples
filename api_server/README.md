@@ -25,7 +25,7 @@ api_server/ : 패키지/모듈 root. 실행도 이위치에서 해야함
 ```
 
 # 2. 실행
-## 환경 설정
+## 2.1. 환경 설정
 ### 파이썬 가상환경 설정 및 모듈 설치
 * anaconda or pyenv로 python 3.11.x 버전의 가상환경 설정(이하 가상환경 이름은 example로 간주한다)하고 활성화
 
@@ -50,7 +50,7 @@ $ pyenv activate example
 (example) $ pip install -r requirements.txt
 ```
 
-## Database 준비
+## 2.2. Database 준비
 
 ### Database 설치
 * https://github.com/luxsolist/examples/blob/main/database/mysql/README.md 참조
@@ -58,7 +58,7 @@ $ pyenv activate example
 ### 테이블 생성
 * mysql에 접속하여 schema.sql 파일의 내용(DDL 구문) 실행
 
-## API server 구동
+## 2.3. API server 구동
 
 ### 로컬에서 실행
 
