@@ -1,30 +1,30 @@
-# 소스 구조
+# 1. 소스 구조
 ```treebash
 api_server/ : 패키지/모듈 root. 실행도 이위치에서 해야함
 │
-├── model/ : API로 주고받을 데이터 model 정의. 원래는 router/xxx.py에 함께 넣으려 했으나 repository/yyy.py를 서로 호출하는 구조라서(썩 좋은 구조는 아님. 예제용..) 상호참조 문제로 외부로 빼냄
-│   ├── user_model.py : user 등록/조회 관련 API 입력 param 및 응답 데이터에 대한 model
+├── model/ : API로 주고받을 데이터 model 정의. 원래는 router/xxx.py에 함께 넣으려 했으나 repository/yyy.py를 서로 호출하는 구조라서(썩 좋은 구조는 아님. 예제용..) 상호참조 문제로 외부로 빼냄.
+│   ├── user_model.py : user 등록/조회 관련 API 입력 param 및 응답 데이터에 대한 model.
 │   └── ...
 │
-├── repository/ : 데이터소스(여기서는 mysql db) CRUD 관련 처리 layer
-│   ├── user_repo.py : users 테이블에 대한 CRUD 처리 코드
+├── repository/ : 데이터소스(여기서는 mysql db) CRUD 관련 로직 및 데이터 model 정의.
+│   ├── user_repo.py : users 테이블에 대한 CRUD 처리 코드.
 │   └── ...
 │
-├── resource/ : API server 동작에 필요한 각종 시스템 리소스(database 접속 등)
-│   ├── database.py : DB 접속 및 session 연결 관련 코드
+├── resource/ : API server 동작에 필요한 각종 시스템 리소스(database 접속 등).
+│   ├── database.py : DB 접속 및 session 연결 관련 코드.
 │   └── ...
 │
-├── router/ : API endpoint별 분리
-│   ├── user.py : user 등록, 조회 관련 API 경로 및 대응되는 endpoint 로직 구현
+├── router/ : API endpoint별 처리 로직.
+│   ├── user.py : user 등록, 조회 관련 API 경로 및 대응되는 endpoint 로직 구현.
 │   └── ...
 │
-├── Dockerfile : API server를 docker로 만들때 정의 파일
-├── main.py : API server를 실행할 main 파일
-├── requirements.txt : 필요한 파이썬 패키지 정의 파일
-└── schema.sql : mysql database table 정의 파일
+├── Dockerfile : API server를 docker로 만들때 정의 파일.
+├── main.py : API server를 실행할 main 파일.
+├── requirements.txt : 필요한 파이썬 패키지 정의 파일.
+└── schema.sql : mysql database table 정의 파일.
 ```
 
-# 실행
+# 2. 실행
 ## 환경 설정
 ### 파이썬 가상환경 설정 및 모듈 설치
 * anaconda or pyenv로 python 3.11.x 버전의 가상환경 설정(이하 가상환경 이름은 example로 간주한다)하고 활성화
