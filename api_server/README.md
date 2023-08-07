@@ -7,7 +7,7 @@ api_server/ : 패키지/모듈 root. 실행도 이위치에서 해야함.
 │   └── ...
 │
 ├── repository/ : 데이터소스(여기서는 mysql db) CRUD 관련 로직 및 데이터 model 정의. 원래 데이터 model은 위의 model/ 아래에 정의하는 경우가 더 일반적.
-│   ├── user_repo.py : users 테이블에 대한 CRUD 처리 코드.
+│   ├── user_repo.py : users 테이블에 대한 CRUD 처리 및 users 테이블 데이터 model 구현.
 │   └── ...
 │
 ├── resource/ : API server 동작에 필요한 각종 시스템 리소스(database 접속 등).
