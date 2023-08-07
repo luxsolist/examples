@@ -1,12 +1,12 @@
 # 1. 소스 구조
 ```treebash
-api_server/ : 패키지/모듈 root. 실행도 이위치에서 해야함
+api_server/ : 패키지/모듈 root. 실행도 이위치에서 해야함.
 │
 ├── model/ : API로 주고받을 데이터 model 정의. 원래는 router/xxx.py에 함께 넣으려 했으나 repository/yyy.py를 서로 호출하는 구조라서(썩 좋은 구조는 아님. 예제용..) 상호참조 문제로 외부로 빼냄.
 │   ├── user_model.py : user 등록/조회 관련 API 입력 param 및 응답 데이터에 대한 model.
 │   └── ...
 │
-├── repository/ : 데이터소스(여기서는 mysql db) CRUD 관련 로직 및 데이터 model 정의.
+├── repository/ : 데이터소스(여기서는 mysql db) CRUD 관련 로직 및 데이터 model 정의. 원래 데이터 model은 위의 model/ 아래에 정의하는 경우가 더 일반적.
 │   ├── user_repo.py : users 테이블에 대한 CRUD 처리 코드.
 │   └── ...
 │
@@ -27,10 +27,10 @@ api_server/ : 패키지/모듈 root. 실행도 이위치에서 해야함
 # 2. 실행
 ## 2.1. 환경 설정
 ### 파이썬 가상환경 설정 및 모듈 설치
-* anaconda or pyenv로 python 3.11.x 버전의 가상환경 설정(이하 가상환경 이름은 example로 간주한다)하고 활성화
+* anaconda or pyenv로 python 3.11.x 버전의 가상환경 설정(이하 가상환경 이름은 example로 간주한다)하고 활성화.
 
 #### Anaconda로 설치
-* 아래 내용은 대충 적은거라 정확히 해보고 수정 필요
+* 아래 내용은 대충 적은거라 정확히 해보고 수정 필요.
 ```bash
 $ conda create -n example python=3.11.2
 $ conda activate example
@@ -53,10 +53,10 @@ $ pyenv activate example
 ## 2.2. Database 준비
 
 ### Database 설치
-* https://github.com/luxsolist/examples/blob/main/database/mysql/README.md 참조
+* https://github.com/luxsolist/examples/blob/main/database/mysql/README.md 참조.
 
 ### 테이블 생성
-* mysql에 접속하여 schema.sql 파일의 내용(DDL 구문) 실행
+* mysql에 접속하여 schema.sql 파일의 내용(DDL 구문) 실행.
 
 ## 2.3. API server 구동
 
