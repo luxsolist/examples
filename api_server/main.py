@@ -1,7 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles 
+from fastapi.templating import Jinja2Templates 
 from router.user import user_router
-
 
 app = FastAPI()
 
@@ -14,4 +15,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
 app.include_router(user_router, prefix="/user")
+
+@app.get("/")
+async def index(request: Request):
+    context = {
+        "request": request
+    }
+    return templates.TemplateResponse("index.html", context)
