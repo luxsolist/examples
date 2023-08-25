@@ -21,8 +21,29 @@ templates = Jinja2Templates(directory="templates")
 app.include_router(user_router, prefix="/user")
 
 @app.get("/")
-async def index(request: Request):
+async def home(request: Request):
     context = {
         "request": request
     }
-    return templates.TemplateResponse("index.html", context)
+    return templates.TemplateResponse("home.html", context)
+
+@app.get("/layout-static")
+async def layout_static(request: Request):
+    context = {
+        "request": request
+    }
+    return templates.TemplateResponse("layout-static.html", context)
+
+@app.get("/charts")
+async def view_charts(request: Request):
+    context = {
+        "request": request
+    }
+    return templates.TemplateResponse("charts.html", context)
+
+@app.get("/tables")
+async def view_tables(request: Request):
+    context = {
+        "request": request
+    }
+    return templates.TemplateResponse("tables.html", context)
