@@ -29,6 +29,6 @@ async def get_all_users_html(request: Request, db: Session = Depends(get_db)):
     list_users = user_repo.get_all(db=db)
     context = {
         "request": request,
-        "users" : list_users  # user/list.html의 {%- for u in users %} 부분의 'users' 에서 사용
+        "users" : list_users  # user/list.html의 {%- for u in users %} 부분의 'users' 에서 사용. 템플릿의 변수명과 여기 key 이름을 동일하게 맞춰야함
     }
     return templates.TemplateResponse("user/list.html", context)
