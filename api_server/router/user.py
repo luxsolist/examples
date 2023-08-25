@@ -9,7 +9,7 @@ from typing import List
 
 
 user_router = APIRouter()
-templates = Jinja2Templates(directory="templates/user")
+templates = Jinja2Templates(directory="templates")
 
 @user_router.post("/signup", response_model=UserRes)
 def signup(user: UserSignupReq, db: Session = Depends(get_db)):
@@ -20,14 +20,15 @@ def signup(user: UserSignupReq, db: Session = Depends(get_db)):
 
 
 @user_router.get("/list", response_model=List[UserRes])
-def get_all(db: Session = Depends(get_db)):
+def get_all_users(db: Session = Depends(get_db)):
     return user_repo.get_all(db=db)
 
 
 @user_router.get("/web/list", response_class=HTMLResponse)
-async def get_all_html(request: Request, db: Session = Depends(get_db)):
+async def get_all_users_html(request: Request, db: Session = Depends(get_db)):
     list_users = user_repo.get_all(db=db)
     context = {
-        "request": request
+        "request": request,
+        "users" : list_users  # user/list.html의 {%- for u in users %} 부분의 'users' 에서 사용
     }
-    return templates.TemplateResponse("list.html", context)
+    return templates.TemplateResponse("user/list.html", context)
